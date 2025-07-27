@@ -4,8 +4,8 @@ by Aaron Troia (@atroia)
 Modified Date: 7/22/25
 
 Description: 
-Update indents and spaces based on font size and leading
-
+Update InDesign paragraph indents and spaces 
+based on font size and leading
 -------------------------------------- */
 
 
