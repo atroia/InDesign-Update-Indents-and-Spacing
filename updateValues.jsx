@@ -45,9 +45,9 @@ function indents() {
             var multiplier = numberMatch ? parseInt(numberMatch[0], 10) : null;
 
             // Left Indent logic
-            if (multiplier) {
+             if (multiplier && name !== "title" && name !== "title2") {
                 style.leftIndent = fontSize * multiplier;
-            } else if (leftIndent !== 0 && leftIndent !== fontSize) {
+            } else if (leftIndent !== 0 && leftIndent !== fontSize !== "title" && name !== "title2") {
                 style.leftIndent = fontSize;
             }
 
@@ -68,6 +68,17 @@ function indents() {
             // Initial Paragraph
             if (name === 'initial paragraph') {
                 style.spaceBefore = fontSize * 5;
+            }
+
+            // title
+            if (name === 'title'){
+                style.spaceBefore = fontSize * 5;
+            }
+
+            // title2
+            if (name === 'title2'){
+                style.ruleAboveOffset = fontSize * 4;
+                style.keepRuleAboveInFrame = true;
             }
 
             $.writeln("Updated: " + name);
@@ -119,7 +130,7 @@ function spaceBefore() {
                 continue;
             }
 
-            if (style.spaceBefore !== 0 && name !== 'initial paragraph') {
+            if (style.spaceBefore !== 0 && name !== 'initial paragraph' && name !== 'title') {
                 style.spaceBefore = leadingValue;
                 $.writeln("Updated: " + styleName + " | spaceBefore = " + leadingValue);
             }
