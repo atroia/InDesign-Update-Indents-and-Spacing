@@ -1,7 +1,7 @@
 /* --------------------------------------
 Update Indents and Spaces
 by Aaron Troia (@atroia)
-Modified Date: 7/22/25
+Modified Date: 7/29/25
 
 Description: 
 Update InDesign paragraph indents and spaces 
@@ -65,6 +65,11 @@ function indents() {
                 }
             }
 
+            // Initial Paragraph
+            if (name === 'initial paragraph') {
+                style.spaceBefore = fontSize * 5;
+            }
+
             $.writeln("Updated: " + name);
 
         } catch (e) {
@@ -78,7 +83,7 @@ function indents() {
 
 function spaceBefore() {
     // List of exclusion words (case-insensitive)
-    var excludeWords = ['footnote', 'endnote', 'caption', 'table'];
+    var excludeWords = ['footnote', 'endnote', 'caption', 'table', 'copy', 'toc', 'Running Head'];
 
     for (var i = 0; i < paraStyles.length; i++) {
         var style = paraStyles[i];
@@ -114,7 +119,7 @@ function spaceBefore() {
                 continue;
             }
 
-            if (style.spaceBefore !== 0) {
+            if (style.spaceBefore !== 0 && name !== 'initial paragraph') {
                 style.spaceBefore = leadingValue;
                 $.writeln("Updated: " + styleName + " | spaceBefore = " + leadingValue);
             }
